@@ -4,7 +4,6 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>KP Digital — Business Hub</title>
-<link rel="icon" type="image/png" href="KP.png">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -262,6 +261,53 @@ textarea.fi{min-height:90px;resize:vertical}
 footer{text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--faint);padding:2rem;border-top:1px solid var(--border)}
 
 /* ── PRINT ── */
+
+/* ── MINDSET / REJECTION ── */
+.rejection-counter{display:flex;align-items:center;justify-content:center;flex-direction:column;background:var(--surface);border:2px solid var(--border2);border-radius:50%;width:140px;height:140px;margin:0 auto 20px;box-shadow:var(--shadow2)}
+.rejection-big{font-family:var(--mono);font-size:48px;font-weight:500;color:var(--accent);line-height:1}
+.rejection-label{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.win-card{background:var(--green-bg);border:1px solid rgba(46,125,82,.25);border-radius:var(--r2);padding:14px 18px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.no-card{background:var(--red-bg);border:1px solid rgba(184,50,50,.15);border-radius:var(--r);padding:10px 14px;margin-bottom:6px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.milestone-row{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid var(--border)}
+.milestone-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+/* ── TAXES ── */
+.tax-bucket{border-radius:var(--r2);padding:18px 20px;margin-bottom:12px;position:relative;overflow:hidden}
+.tax-bucket::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.tax-bucket.keep::before{background:var(--green)}
+.tax-bucket.set::before{background:var(--red)}
+.tax-bucket.deduct::before{background:var(--blue)}
+.tax-bucket.keep{background:var(--green-bg);border:1px solid rgba(46,125,82,.2)}
+.tax-bucket.set{background:var(--red-bg);border:1px solid rgba(184,50,50,.15)}
+.tax-bucket.deduct{background:var(--blue-bg);border:1px solid rgba(70,107,148,.2)}
+.tax-bucket-label{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.tax-bucket-val{font-family:var(--mono);font-size:22px;font-weight:500;margin-bottom:4px}
+/* ── CONTRACT ── */
+.contract-preview{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r2);padding:32px;font-family:var(--mono);font-size:12px;line-height:2;box-shadow:var(--shadow2);max-height:600px;overflow-y:auto}
+.contract-section{margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--border)}
+.contract-section:last-child{border-bottom:none}
+.contract-section-title{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:8px}
+/* ── PORTFOLIO ── */
+.portfolio-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:18px 20px;margin-bottom:12px;box-shadow:var(--shadow)}
+.portfolio-card-title{font-family:var(--serif);font-size:18px;margin-bottom:4px}
+.portfolio-progress{height:6px;background:var(--bg3);border-radius:3px;overflow:hidden;margin-top:10px}
+.portfolio-progress-fill{height:100%;background:var(--accent);border-radius:3px;transition:width .4s}
+/* ── PLAYBOOK ── */
+.playbook-scenario{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);margin-bottom:12px;overflow:hidden;box-shadow:var(--shadow)}
+.playbook-header{padding:14px 18px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .15s}
+.playbook-header:hover{background:var(--bg2)}
+.playbook-title{font-family:var(--serif);font-size:17px}
+.playbook-body{display:none;padding:0 18px 18px;border-top:1px solid var(--border)}
+.playbook-body.open{display:block}
+/* ── NICHE ORDER ── */
+.niche-rank{display:flex;align-items:flex-start;gap:18px;padding:18px 20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);margin-bottom:10px;box-shadow:var(--shadow)}
+.niche-rank-num{font-family:var(--mono);font-size:32px;font-weight:500;color:var(--border2);line-height:1;flex-shrink:0;width:36px;text-align:right}
+.niche-rank-num.gold{color:#c9a227}
+.niche-rank-num.silver{color:#8a9ba8}
+.niche-rank-num.bronze{color:#b87333}
+.niche-rank-body{flex:1}
+.niche-rank-name{font-family:var(--serif);font-size:20px;margin-bottom:2px}
+.niche-rank-why{font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.7;margin-top:6px}
+
 @media print{nav,footer,.floating-theme-btn,.nav-tabs,.nav-btn{display:none!important}.invoice-wrap{border:none;box-shadow:none}.page{display:block!important}}
 </style>
 </head>
@@ -280,10 +326,14 @@ footer{text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.
     <button class="nav-tab" onclick="showPage('scaling')">Scaling</button>
     <button class="nav-tab" onclick="showPage('reference')">Reference</button>
     <button class="nav-tab" onclick="showPage('saved')">Saved</button>
+    <button class="nav-tab" onclick="showPage('mindset')">Mindset</button>
+    <button class="nav-tab" onclick="showPage('taxes')">Taxes</button>
+    <button class="nav-tab" onclick="showPage('contract')">Contract</button>
+    <button class="nav-tab" onclick="showPage('portfolio')">Portfolio</button>
+    <button class="nav-tab" onclick="showPage('playbook')">Playbook</button>
+    <button class="nav-tab" onclick="showPage('priority')">Niche Order</button>
   </div>
-  <div class="nav-right">
-    <button class="nav-btn" id="themeBtn" onclick="toggleTheme()">Dark mode</button>
-  </div>
+
 </nav>
 
 <!-- ═══════════════════════════ DASHBOARD ═══════════════════════════ -->
@@ -1539,6 +1589,508 @@ KP | KP Digital
 </div>
 </div>
 
+
+<!-- ═══════════════════════════ MINDSET ═══════════════════════════ -->
+<div class="page" id="page-mindset">
+<div class="wrap">
+  <div class="page-hdr"><h2>Mindset & <em>Rejection Tracker</em></h2><p>Every no gets you closer to yes — track it, embrace it, count it</p></div>
+
+  <div class="g2" style="margin-bottom:2rem">
+    <div>
+      <div class="sec-hdr"><span class="sec-title">Rejection Counter</span><span class="sec-sub">Today's nos</span></div>
+      <div class="panel" style="text-align:center">
+        <div class="rejection-counter">
+          <div class="rejection-big" id="rej-count">0</div>
+          <div class="rejection-label">rejections</div>
+        </div>
+        <div style="display:flex;gap:10px;justify-content:center;margin-bottom:16px">
+          <button class="nav-btn" style="font-size:18px;padding:10px 22px" onclick="addRejection()">+1 No</button>
+          <button class="nav-btn" onclick="resetRejections()">Reset day</button>
+        </div>
+        <div class="info-bar blue" id="rej-message">Start making calls. Every no is data.</div>
+        <div style="margin-top:14px">
+          <div class="result-row"><span class="result-label">Total nos logged all-time</span><span class="badge badge-accent" id="rej-total">0</span></div>
+          <div class="result-row"><span class="result-label">Nos to first yes (avg beginner)</span><span class="badge badge-amber">20–50</span></div>
+          <div class="result-row"><span class="result-label">Your estimated yes progress</span><span class="badge badge-green" id="rej-progress">—</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-hdr"><span class="sec-title">Log a Win</span><span class="sec-sub">Every win counts</span></div>
+      <div class="panel">
+        <div class="field"><label>What happened?</label><input class="fi" id="win-text" placeholder="Booked a demo with Mike's Barbershop"></div>
+        <div class="g2">
+          <div class="field"><label>Type</label>
+            <select class="fi" id="win-type">
+              <option>Demo booked</option>
+              <option>Proposal sent</option>
+              <option>Client closed</option>
+              <option>Payment received</option>
+              <option>Positive reply</option>
+              <option>Referral received</option>
+            </select>
+          </div>
+          <div class="field"><label>Value ($)</label><input class="fi" id="win-val" type="number" placeholder="0"></div>
+        </div>
+        <button class="nav-btn" style="background:var(--green);color:#fff;border-color:var(--green)" onclick="addWin()">Log this win</button>
+      </div>
+      <div id="win-list"></div>
+    </div>
+  </div>
+
+  <div class="sec-hdr"><span class="sec-title">Milestones</span><span class="sec-sub">Track your journey</span></div>
+  <div class="panel">
+    <div class="milestone-row"><div class="milestone-dot" style="background:var(--border2)"></div><div style="flex:1"><strong style="font-family:var(--mono);font-size:12px">First 10 calls made</strong><div style="font-family:var(--mono);font-size:11px;color:var(--muted)">You've started. Most people never make it here.</div></div><div class="badge" id="ms-0" style="background:var(--bg3);color:var(--muted)">Locked</div></div>
+    <div class="milestone-row"><div class="milestone-dot" style="background:var(--amber)"></div><div style="flex:1"><strong style="font-family:var(--mono);font-size:12px">First demo booked</strong><div style="font-family:var(--mono);font-size:11px;color:var(--muted)">Someone cared enough to say "show me."</div></div><div class="badge" id="ms-1" style="background:var(--bg3);color:var(--muted)">Locked</div></div>
+    <div class="milestone-row"><div class="milestone-dot" style="background:var(--accent)"></div><div style="flex:1"><strong style="font-family:var(--mono);font-size:12px">First paying client</strong><div style="font-family:var(--mono);font-size:11px;color:var(--muted)">The hardest one. Everything gets easier after this.</div></div><div class="badge" id="ms-2" style="background:var(--bg3);color:var(--muted)">Locked</div></div>
+    <div class="milestone-row"><div class="milestone-dot" style="background:var(--green)"></div><div style="flex:1"><strong style="font-family:var(--mono);font-size:12px">$500 total earned</strong><div style="font-family:var(--mono);font-size:11px;color:var(--muted)">You have a real business. Not a hobby.</div></div><div class="badge" id="ms-3" style="background:var(--bg3);color:var(--muted)">Locked</div></div>
+    <div class="milestone-row"><div class="milestone-dot" style="background:var(--green)"></div><div style="flex:1"><strong style="font-family:var(--mono);font-size:12px">$2,000 total earned</strong><div style="font-family:var(--mono);font-size:11px;color:var(--muted)">You can cover real expenses. Keep going.</div></div><div class="badge" id="ms-4" style="background:var(--bg3);color:var(--muted)">Locked</div></div>
+    <div class="milestone-row" style="border:none"><div class="milestone-dot" style="background:var(--green)"></div><div style="flex:1"><strong style="font-family:var(--mono);font-size:12px">First retainer client</strong><div style="font-family:var(--mono);font-size:11px;color:var(--muted)">Recurring income. This is when it becomes a real business.</div></div><div class="badge" id="ms-5" style="background:var(--bg3);color:var(--muted)">Locked</div></div>
+  </div>
+
+  <div class="sec-hdr" style="margin-top:1.5rem"><span class="sec-title">The Truth About Rejection</span></div>
+  <div class="g2">
+    <div class="panel">
+      <div class="panel-hdr"><span class="panel-label">What rejection actually means</span></div>
+      <ul class="step-list">
+        <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px"><strong>It's not personal.</strong> They said no to a website, not to you as a person.</div></li>
+        <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px"><strong>It's a numbers game.</strong> 20–50 nos is completely normal before your first yes.</div></li>
+        <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px"><strong>Your script improves with every call.</strong> Call 50 is way better than call 1.</div></li>
+        <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px"><strong>Most people quit at 10 calls.</strong> You staying in automatically puts you ahead.</div></li>
+        <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px"><strong>A "no" today can become a "yes" in 30 days.</strong> Keep following up.</div></li>
+      </ul>
+    </div>
+    <div class="panel">
+      <div class="panel-hdr"><span class="panel-label">Daily mindset rules</span></div>
+      <div class="result-row"><span>Make the calls before you feel ready</span><span class="badge badge-accent">Rule 1</span></div>
+      <div class="result-row"><span>Volume beats perfection — always</span><span class="badge badge-accent">Rule 2</span></div>
+      <div class="result-row"><span>Log every win, no matter how small</span><span class="badge badge-green">Rule 3</span></div>
+      <div class="result-row"><span>Compare yourself to yesterday, not others</span><span class="badge badge-blue">Rule 4</span></div>
+      <div class="result-row"><span>One good week can change everything</span><span class="badge badge-amber">Rule 5</span></div>
+      <div class="result-row"><span>Discomfort = growth. Comfort = stuck.</span><span class="badge badge-accent">Rule 6</span></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════ TAXES ═══════════════════════════ -->
+<div class="page" id="page-taxes">
+<div class="wrap">
+  <div class="page-hdr"><h2>Taxes & <em>Money</em></h2><p>Freelance income basics — what to save, what you can deduct, what to never do</p></div>
+
+  <div class="info-bar red" style="margin-bottom:2rem"><strong>Important:</strong> You are self-employed. The government does NOT take taxes out for you. You must handle this yourself or you'll owe a huge bill at tax time. This section shows you exactly what to do.</div>
+
+  <div class="g2" style="margin-bottom:2rem">
+    <div>
+      <div class="sec-hdr"><span class="sec-title">Tax Calculator</span><span class="sec-sub">Per payment received</span></div>
+      <div class="panel">
+        <div class="field"><label>Payment received ($)</label><div class="inline-money"><span>$</span><input id="tax-payment" type="number" value="500" oninput="calcTax()"></div></div>
+        <div class="field"><label>Your tax rate</label>
+          <select class="fi" id="tax-rate" onchange="calcTax()">
+            <option value="0.25">25% — Recommended starting point</option>
+            <option value="0.28">28% — Safe / conservative</option>
+            <option value="0.30">30% — Very conservative</option>
+          </select>
+        </div>
+      </div>
+      <div class="tax-bucket set">
+        <div class="tax-bucket-label" style="color:var(--red)">🔒 Set aside immediately — do NOT spend</div>
+        <div class="tax-bucket-val" id="tax-set" style="color:var(--red)">$125</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--muted)">Move this to a separate savings account right now</div>
+      </div>
+      <div class="tax-bucket keep">
+        <div class="tax-bucket-label" style="color:var(--green)">✅ Yours to keep and spend</div>
+        <div class="tax-bucket-val" id="tax-keep" style="color:var(--green)">$375</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--muted)">After tax reserve, this is your real take-home</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-hdr"><span class="sec-title">The 3 Rules</span><span class="sec-sub">Never break these</span></div>
+      <div class="panel" style="border-left:4px solid var(--red)">
+        <ul class="step-list">
+          <li><div class="step-num" style="background:var(--red-bg);color:var(--red)">1</div><div class="step-body" style="font-size:14px"><strong>Set aside 25–30% of every payment the day you receive it.</strong> Before you spend a single dollar on anything else.</div></li>
+          <li><div class="step-num" style="background:var(--red-bg);color:var(--red)">2</div><div class="step-body" style="font-size:14px"><strong>Open a separate savings account just for taxes.</strong> Label it "Tax Money — Do Not Touch." This one habit saves freelancers from disaster.</div></li>
+          <li><div class="step-num" style="background:var(--red-bg);color:var(--red)">3</div><div class="step-body" style="font-size:14px"><strong>Track every payment you receive.</strong> Keep a simple log. Date, client name, amount. You'll need this at tax time.</div></li>
+        </ul>
+      </div>
+      <div class="info-bar amber">If you earn more than <strong>$400/year</strong> freelancing you are legally required to report it. Once you pass <strong>$1,000/year</strong>, look into quarterly estimated tax payments to avoid a penalty.</div>
+    </div>
+  </div>
+
+  <div class="sec-hdr"><span class="sec-title">What You Can Deduct</span><span class="sec-sub">These reduce your taxable income — track them all</span></div>
+  <div class="panel">
+    <table class="tbl">
+      <thead><tr><th>Expense</th><th>Example</th><th>Deductible?</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Website builder subscriptions</td><td>Wix, Webflow, Framer</td><td><span class="badge badge-green">Yes — 100%</span></td><td>Business tool</td></tr>
+        <tr><td>Domain names</td><td>Namecheap, GoDaddy</td><td><span class="badge badge-green">Yes — 100%</span></td><td>For client sites you own</td></tr>
+        <tr><td>Hosting costs</td><td>Hostinger, SiteGround</td><td><span class="badge badge-green">Yes — 100%</span></td><td>Direct business expense</td></tr>
+        <tr><td>Design tools</td><td>Canva Pro, Figma</td><td><span class="badge badge-green">Yes — 100%</span></td><td>Used for client work</td></tr>
+        <tr><td>AI subscriptions</td><td>Claude Pro, ChatGPT Plus</td><td><span class="badge badge-green">Yes — 100%</span></td><td>Business productivity tool</td></tr>
+        <tr><td>Phone bill</td><td>Making business calls</td><td><span class="badge badge-amber">Partial</span></td><td>Business % of total use</td></tr>
+        <tr><td>Internet bill</td><td>Home WiFi for work</td><td><span class="badge badge-amber">Partial</span></td><td>Business % of total use</td></tr>
+        <tr><td>Equipment</td><td>Laptop, monitor</td><td><span class="badge badge-amber">Partial</span></td><td>If used primarily for work</td></tr>
+        <tr><td>Personal food/coffee</td><td>Starbucks while you work</td><td><span class="badge badge-red">No</span></td><td>Not a deductible expense</td></tr>
+        <tr><td>Clothes</td><td>"I dress professionally"</td><td><span class="badge badge-red">No</span></td><td>Not deductible for freelancers</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-hdr" style="margin-top:1.5rem"><span class="sec-title">Income Log</span><span class="sec-sub">Track every payment — saved in browser</span></div>
+  <div class="panel" style="margin-bottom:12px">
+    <div style="display:grid;grid-template-columns:1fr 1fr 120px 120px;gap:10px;align-items:end">
+      <div class="field" style="margin-bottom:0"><label>Client / project</label><input class="fi" id="inc-client" placeholder="Mike's Barbershop"></div>
+      <div class="field" style="margin-bottom:0"><label>Description</label><input class="fi" id="inc-desc" placeholder="Starter website package"></div>
+      <div class="field" style="margin-bottom:0"><label>Amount ($)</label><input class="fi" id="inc-amount" type="number" placeholder="500"></div>
+      <button class="nav-btn" style="background:var(--accent);color:#fff;border-color:var(--accent);height:40px" onclick="addIncomeEntry()">Log it</button>
+    </div>
+  </div>
+  <div id="income-log-table"></div>
+  <div class="g3" style="margin-top:14px">
+    <div class="stat-card"><div class="stat-k">Total earned</div><div class="stat-v tbl-green" id="inc-total">$0</div></div>
+    <div class="stat-card"><div class="stat-k">Tax to set aside (25%)</div><div class="stat-v" style="color:var(--red)" id="inc-tax">$0</div></div>
+    <div class="stat-card"><div class="stat-k">Your real take-home</div><div class="stat-v tbl-green" id="inc-net">$0</div></div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════ CONTRACT ═══════════════════════════ -->
+<div class="page" id="page-contract">
+<div class="wrap">
+  <div class="page-hdr"><h2>Client <em>Agreement</em></h2><p>A simple 1-page contract that protects you — fill in the blanks, copy, send</p></div>
+
+  <div class="info-bar amber" style="margin-bottom:1.5rem"><strong>Why you need this:</strong> Without a written agreement, clients can demand unlimited revisions, ghost you after 50% paid, or claim the finished site isn't what they wanted. This document prevents all of that.</div>
+
+  <div class="g2" style="align-items:start">
+    <div class="panel">
+      <div class="panel-hdr"><span class="panel-label">Fill in the details</span></div>
+      <div class="field"><label>Your name</label><input class="fi" id="ct-you" value="KP" oninput="buildContract()"></div>
+      <div class="field"><label>Client name / business</label><input class="fi" id="ct-client" placeholder="Mike's Barbershop" oninput="buildContract()"></div>
+      <div class="field"><label>Project description</label><input class="fi" id="ct-project" placeholder="5-page website with booking and gallery" oninput="buildContract()"></div>
+      <div class="field"><label>Total price ($)</label><input class="fi" id="ct-price" type="number" placeholder="900" oninput="buildContract()"></div>
+      <div class="field"><label>Deposit amount ($)</label><input class="fi" id="ct-deposit" type="number" placeholder="450" oninput="buildContract()"></div>
+      <div class="field"><label>Estimated delivery</label><input class="fi" id="ct-delivery" placeholder="7–10 business days" oninput="buildContract()"></div>
+      <div class="field"><label>Number of revision rounds</label>
+        <select class="fi" id="ct-revisions" onchange="buildContract()">
+          <option value="1">1 round of revisions</option>
+          <option value="2" selected>2 rounds of revisions</option>
+          <option value="3">3 rounds of revisions</option>
+        </select>
+      </div>
+      <div class="field"><label>Date</label><input class="fi" id="ct-date" oninput="buildContract()"></div>
+    </div>
+
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <span class="panel-label" style="font-size:13px">Contract preview</span>
+        <button class="cbtn" onclick="copyEl(this,'contract-out')">Copy</button>
+      </div>
+      <div class="contract-preview" id="contract-out"></div>
+    </div>
+  </div>
+
+  <div class="sec-hdr" style="margin-top:2rem"><span class="sec-title">Key Terms Explained</span><span class="sec-sub">What each clause actually protects</span></div>
+  <div class="g2">
+    <div class="panel">
+      <div class="result-row"><span><strong>50% deposit</strong></span><span style="font-family:var(--mono);font-size:11px;color:var(--muted);text-align:right;max-width:200px">Filters serious clients. Covers your time if they ghost.</span></div>
+      <div class="result-row"><span><strong>Revision limit</strong></span><span style="font-family:var(--mono);font-size:11px;color:var(--muted);text-align:right;max-width:200px">Stops endless "can you just change this one more thing."</span></div>
+      <div class="result-row"><span><strong>Content deadline</strong></span><span style="font-family:var(--mono);font-size:11px;color:var(--muted);text-align:right;max-width:200px">Protects your timeline if client is slow with photos/info.</span></div>
+      <div class="result-row"><span><strong>Launch = final payment</strong></span><span style="font-family:var(--mono);font-size:11px;color:var(--muted);text-align:right;max-width:200px">You don't go live until they pay the balance. Period.</span></div>
+    </div>
+    <div class="panel">
+      <div class="panel-hdr"><span class="panel-label">When to send the contract</span></div>
+      <ul class="step-list">
+        <li><div class="step-num">1</div><div class="step-body" style="font-size:14px">Client says "yes, let's do it"</div></li>
+        <li><div class="step-num">2</div><div class="step-body" style="font-size:14px">Send contract + deposit invoice at the same time</div></li>
+        <li><div class="step-num">3</div><div class="step-body" style="font-size:14px">Don't start building until both are received</div></li>
+        <li><div class="step-num">4</div><div class="step-body" style="font-size:14px">If they won't sign, they're not serious</div></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════ PORTFOLIO ═══════════════════════════ -->
+<div class="page" id="page-portfolio">
+<div class="wrap">
+  <div class="page-hdr"><h2>Portfolio <em>Builder</em></h2><p>Build demo sites strategically before you have real clients</p></div>
+
+  <div class="info-bar blue">You need <strong>at least 2–3 demo sites</strong> before you start calling. They don't need to be for real clients — they need to look real. This page tells you exactly what to build and tracks your progress.</div>
+
+  <div class="sec-hdr" style="margin-top:1.5rem"><span class="sec-title">Demo Site Tracker</span><span class="sec-sub">Saved in browser</span></div>
+  <div class="panel" style="margin-bottom:16px">
+    <div style="display:grid;grid-template-columns:1fr 140px 140px 120px;gap:10px;align-items:end">
+      <div class="field" style="margin-bottom:0"><label>Demo site name</label><input class="fi" id="pf-name" placeholder="Brooklyn Cuts Barbershop Demo"></div>
+      <div class="field" style="margin-bottom:0"><label>Niche</label>
+        <select class="fi" id="pf-niche">
+          <option>Barbershop</option><option>Nail Salon</option><option>Hair Salon</option>
+          <option>Cleaning</option><option>HVAC</option><option>Restaurant</option>
+          <option>Mechanic</option><option>Landscaping</option><option>Trainer</option>
+        </select>
+      </div>
+      <div class="field" style="margin-bottom:0"><label>Status</label>
+        <select class="fi" id="pf-status">
+          <option>Planning</option><option>In Progress</option><option>Done ✅</option>
+        </select>
+      </div>
+      <button class="nav-btn" style="background:var(--accent);color:#fff;border-color:var(--accent);height:40px" onclick="addPortfolio()">Add</button>
+    </div>
+    <div class="field" style="margin-top:10px;margin-bottom:0"><label>URL (when done)</label><input class="fi" id="pf-url" placeholder="https://your-demo.webflow.io"></div>
+  </div>
+  <div id="portfolio-list"></div>
+
+  <div class="sec-hdr" style="margin-top:2rem"><span class="sec-title">What to Build First</span><span class="sec-sub">Prioritized by closing power</span></div>
+  <div class="g2">
+    <div>
+      <div class="panel" style="border-left:4px solid var(--green)">
+        <div class="panel-hdr"><span class="panel-label">Demo 1 — Barbershop (build this first)</span></div>
+        <ul class="step-list">
+          <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px">Clean hero: shop name, tagline, "Book Now" button</div></li>
+          <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px">Services + pricing list (haircut, beard trim, lineup)</div></li>
+          <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px">Gallery of 4–6 cut photos (use Unsplash)</div></li>
+          <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px">Calendly or "Call to Book" button</div></li>
+          <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px">Hours + Google Maps embed</div></li>
+          <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px">Looks great on mobile — check this first</div></li>
+        </ul>
+        <div class="info-bar accent" style="margin-top:12px">Build this in <strong>Wix Studio or Framer</strong>. Use a fake name like "Sharp & Clean Barbershop." Make it look so real someone would think it's a real business.</div>
+      </div>
+    </div>
+    <div>
+      <div class="panel" style="border-left:4px solid var(--amber)">
+        <div class="panel-hdr"><span class="panel-label">Demo 2 — Nail/Beauty Salon</span></div>
+        <ul class="step-list">
+          <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px">Soft, aesthetic design (pastel or elegant tones)</div></li>
+          <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px">Services menu: gel, acrylic, pedicures + prices</div></li>
+          <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px">Photo gallery: nail art shots from Unsplash/Pexels</div></li>
+          <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px">Online booking button (Booksy or Vagaro link)</div></li>
+          <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px">Instagram feed section (even if mocked)</div></li>
+        </ul>
+      </div>
+      <div class="panel" style="border-left:4px solid var(--blue);margin-top:12px">
+        <div class="panel-hdr"><span class="panel-label">Demo 3 — Cleaning/HVAC (lead gen)</span></div>
+        <ul class="step-list">
+          <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px">Bold headline: "Get a Free Quote Today"</div></li>
+          <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px">Quote request form (name, phone, service type)</div></li>
+          <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px">Service area + coverage map</div></li>
+          <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px">Before/after photos or service images</div></li>
+          <li><div class="step-num">✓</div><div class="step-body" style="font-size:14px">Trust signals: years in business, reviews</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-hdr" style="margin-top:2rem"><span class="sec-title">The Golden Rule</span></div>
+  <div class="g2">
+    <div class="info-bar green">Your demo is your <strong>most powerful sales tool.</strong> When you can say "I already built something — want me to show you what your shop would look like?" — that's 10× more powerful than describing what you do.</div>
+    <div class="info-bar amber">Use <strong>Unsplash.com</strong> and <strong>Pexels.com</strong> for all photos. Use <strong>Claude or ChatGPT</strong> to write all the copy. A full demo site should take you <strong>2–4 hours max</strong>.</div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════ PLAYBOOK ═══════════════════════════ -->
+<div class="page" id="page-playbook">
+<div class="wrap">
+  <div class="page-hdr"><h2>Problem <em>Playbook</em></h2><p>What to do when things go wrong — exact scripts and decisions</p></div>
+
+  <div class="info-bar blue">Every freelancer runs into these. Having your response planned <em>before</em> it happens means you don't panic, don't cave, and don't lose money.</div>
+
+  <div id="playbook-scenarios">
+
+    <div class="playbook-scenario">
+      <div class="playbook-header" onclick="togglePlaybook(this)">
+        <div><span class="badge badge-red" style="margin-right:10px">🚨 Nightmare</span><span class="playbook-title">Client goes ghost after paying 50% deposit</span></div>
+        <span style="font-family:var(--mono);font-size:11px;color:var(--muted)">tap to expand</span>
+      </div>
+      <div class="playbook-body">
+        <div class="info-bar amber">Wait 3 days, then follow up. Most ghosts come back — they got busy, not cold.</div>
+        <div class="panel-hdr" style="margin-top:12px"><span class="panel-label">What to do</span></div>
+        <ul class="step-list">
+          <li><div class="step-num">1</div><div class="step-body" style="font-size:14px">Day 3: Send a friendly check-in. "Hey [Name], just checking in — I'm ready to start whenever you can send the info."</div></li>
+          <li><div class="step-num">2</div><div class="step-body" style="font-size:14px">Day 7: Follow up with urgency. "I have a few projects lined up — want to lock in your slot?"</div></li>
+          <li><div class="step-num">3</div><div class="step-body" style="font-size:14px">Day 14: Final message. "I'm going to release your spot this week. Let me know if you'd like to move forward or if you'd like a refund."</div></li>
+          <li><div class="step-num">4</div><div class="step-body" style="font-size:14px">After Day 14: Keep the deposit. Your contract covers this. Move on.</div></li>
+        </ul>
+        <div class="script-box" style="margin-top:12px">Hey [Name], hope you're doing well. I wanted to check in — I have everything ready to go on my end. If you can send over your logo and a few photos, I can get started right away. No rush, just want to make sure we stay on track for your timeline. — KP</div>
+      </div>
+    </div>
+
+    <div class="playbook-scenario">
+      <div class="playbook-header" onclick="togglePlaybook(this)">
+        <div><span class="badge badge-amber" style="margin-right:10px">⚠️ Common</span><span class="playbook-title">Client wants unlimited revisions</span></div>
+        <span style="font-family:var(--mono);font-size:11px;color:var(--muted)">tap to expand</span>
+      </div>
+      <div class="playbook-body">
+        <div class="info-bar red">This is the #1 way you lose money. Your contract limits revisions — enforce it gently but firmly.</div>
+        <div class="panel-hdr" style="margin-top:12px"><span class="panel-label">What to say</span></div>
+        <div class="script-box" style="margin-top:8px">Hey [Name], I want to make sure this comes out exactly right for you. We've used our 2 included revision rounds — I want to be upfront that any additional changes beyond what we agreed are billed at $75/hr. Happy to do them, just want to make sure there are no surprises. Want me to send an estimate for the extra changes?</div>
+        <div class="info-bar green" style="margin-top:12px">Key: Don't apologize, don't cave. This is standard practice. Say it confidently.</div>
+      </div>
+    </div>
+
+    <div class="playbook-scenario">
+      <div class="playbook-header" onclick="togglePlaybook(this)">
+        <div><span class="badge badge-amber" style="margin-right:10px">⚠️ Common</span><span class="playbook-title">Client hates the design / says it's not what they wanted</span></div>
+        <span style="font-family:var(--mono);font-size:11px;color:var(--muted)">tap to expand</span>
+      </div>
+      <div class="playbook-body">
+        <div class="info-bar blue">This usually happens because you didn't ask enough questions upfront. Use the questionnaire in the Clients tab every time.</div>
+        <div class="panel-hdr" style="margin-top:12px"><span class="panel-label">What to do</span></div>
+        <ul class="step-list">
+          <li><div class="step-num">1</div><div class="step-body" style="font-size:14px">Don't get defensive. Say: "I totally hear you — let's figure out exactly what direction you want."</div></li>
+          <li><div class="step-num">2</div><div class="step-body" style="font-size:14px">Ask them to send 2–3 websites they like. This is the fastest way to align.</div></li>
+          <li><div class="step-num">3</div><div class="step-body" style="font-size:14px">Make the revision (if it's within your rounds). Use this as a learning moment.</div></li>
+          <li><div class="step-num">4</div><div class="step-body" style="font-size:14px">If it's a total redesign, that's billable. Apply your extra revision rate.</div></li>
+        </ul>
+        <div class="script-box" style="margin-top:12px">No problem at all — I want you to love it. Can you send me 2–3 websites you like the look of? That'll help me nail the exact vibe you're going for.</div>
+      </div>
+    </div>
+
+    <div class="playbook-scenario">
+      <div class="playbook-header" onclick="togglePlaybook(this)">
+        <div><span class="badge badge-amber" style="margin-right:10px">⚠️ Common</span><span class="playbook-title">Client won't pay the final 50% after seeing the site</span></div>
+        <span style="font-family:var(--mono);font-size:11px;color:var(--muted)">tap to expand</span>
+      </div>
+      <div class="playbook-body">
+        <div class="info-bar red">Your contract states the site goes live after final payment. Do not launch until you're paid.</div>
+        <div class="script-box" style="margin-top:8px">Hey [Name], I'm glad you like it! I'm ready to go live as soon as the final payment comes through. Per our agreement, the site launches on receipt of the remaining balance. I can send a Stripe link right now if that's easiest — usually just takes a minute.</div>
+        <div class="info-bar amber" style="margin-top:12px">If they truly dispute it, offer one last free revision to resolve their concern — then hold firm on payment before going live.</div>
+      </div>
+    </div>
+
+    <div class="playbook-scenario">
+      <div class="playbook-header" onclick="togglePlaybook(this)">
+        <div><span class="badge badge-blue" style="margin-right:10px">💬 Awkward</span><span class="playbook-title">Client asks you to lower your price mid-project</span></div>
+        <span style="font-family:var(--mono);font-size:11px;color:var(--muted)">tap to expand</span>
+      </div>
+      <div class="playbook-body">
+        <div class="info-bar blue">Never lower price mid-project. You can offer to reduce scope instead.</div>
+        <div class="script-box" style="margin-top:8px">I want to make this work for you. I can't adjust the price for what we've already agreed on, but if budget is tight, I can remove [specific feature] to bring it down to $[lower price]. Want me to put together a revised scope?</div>
+      </div>
+    </div>
+
+    <div class="playbook-scenario">
+      <div class="playbook-header" onclick="togglePlaybook(this)">
+        <div><span class="badge badge-blue" style="margin-right:10px">💬 Awkward</span><span class="playbook-title">Client is slow sending you content / photos / logo</span></div>
+        <span style="font-family:var(--mono);font-size:11px;color:var(--muted)">tap to expand</span>
+      </div>
+      <div class="playbook-body">
+        <div class="info-bar amber">Your timeline stops when they stop. Make this clear upfront and in your contract.</div>
+        <div class="script-box" style="margin-top:8px">Hey [Name], just a quick heads up — I want to hit your [delivery date] target, but I'll need the content by [date] to stay on track. If I don't have it by then, the timeline will shift by however many days we're delayed. No pressure at all — just keeping you in the loop! 🙌</div>
+      </div>
+    </div>
+
+    <div class="playbook-scenario">
+      <div class="playbook-header" onclick="togglePlaybook(this)">
+        <div><span class="badge badge-green" style="margin-right:10px">✅ Opportunity</span><span class="playbook-title">Client loved the site — how to upsell a retainer</span></div>
+        <span style="font-family:var(--mono);font-size:11px;color:var(--muted)">tap to expand</span>
+      </div>
+      <div class="playbook-body">
+        <div class="info-bar green">The best time to sell a retainer is right at launch when they're happiest. Do not skip this.</div>
+        <div class="script-box" style="margin-top:8px">Really glad you love it! Now that it's live, one thing a lot of my clients do is a simple monthly plan — for $200/month I handle all your hosting, backups, security, and any small updates or edits you need. Basically you never have to touch the tech side again. Want to add that on?</div>
+        <div class="info-bar blue" style="margin-top:12px">Even 3 clients on $200/month retainers = <strong>$600/month in recurring income</strong> with almost zero extra work.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════ NICHE PRIORITY ORDER ═══════════════════════════ -->
+<div class="page" id="page-priority">
+<div class="wrap">
+  <div class="page-hdr"><h2>Niche <em>Priority Order</em></h2><p>Who to call first, second, and last — based on ease of close and speed to yes</p></div>
+
+  <div class="info-bar accent">Start with the easiest yeses to build confidence and portfolio proof. Then work your way up to the higher-ticket, harder-to-close niches.</div>
+
+  <div class="sec-hdr" style="margin-top:1.5rem"><span class="sec-title">🥇 Start Here — Fastest Yeses</span></div>
+
+  <div class="niche-rank">
+    <div class="niche-rank-num gold">1</div>
+    <div class="niche-rank-body">
+      <div class="niche-rank-name">Barbershops</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:6px 0"><span class="badge badge-green">Highest close rate</span><span class="badge badge-accent">$500–$1,200</span><span class="badge badge-blue">Owner always on-site</span></div>
+      <div class="niche-rank-why">Owner is almost always physically at the shop — you reach the decision maker instantly. Very low tech sophistication means a clean demo looks impressive. They care about bookings and looking good online. Strong visual demos close these fast.</div>
+    </div>
+  </div>
+
+  <div class="niche-rank">
+    <div class="niche-rank-num gold">2</div>
+    <div class="niche-rank-body">
+      <div class="niche-rank-name">Nail Salons & Beauty Salons</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:6px 0"><span class="badge badge-green">High close rate</span><span class="badge badge-accent">$500–$1,200</span><span class="badge badge-amber">Visual = instant value</span></div>
+      <div class="niche-rank-why">Constant customer flow means they understand marketing. Most rely on Instagram with no proper site. A booking-focused demo with a gallery literally shows them what they're missing. Show the booking system and they'll say yes fast.</div>
+    </div>
+  </div>
+
+  <div class="niche-rank">
+    <div class="niche-rank-num silver">3</div>
+    <div class="niche-rank-body">
+      <div class="niche-rank-name">Cleaning Companies</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:6px 0"><span class="badge badge-amber">Medium-high close</span><span class="badge badge-accent">$500–$1,100</span><span class="badge badge-green">ROI pitch is easy</span></div>
+      <div class="niche-rank-why">Very ROI-driven owners — they care about leads, not design. Easy pitch: "Every new job you get from this site pays for the site 3x over." Small local operators with bad online presence. Quick to decide when they see the value.</div>
+    </div>
+  </div>
+
+  <div class="sec-hdr" style="margin-top:1.5rem"><span class="sec-title">🥈 Good — Build These After First 3 Clients</span></div>
+
+  <div class="niche-rank">
+    <div class="niche-rank-num silver">4</div>
+    <div class="niche-rank-body">
+      <div class="niche-rank-name">Landscaping Companies</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:6px 0"><span class="badge badge-amber">Medium-high close</span><span class="badge badge-accent">$500–$1,100</span><span class="badge badge-blue">Seasonal urgency</span></div>
+      <div class="niche-rank-why">Seasonal demand creates urgency — especially in spring/summer. Before/after photos do the selling for you. Slightly more competitive than salons but owners are still reachable. Great for upselling service-area SEO pages later.</div>
+    </div>
+  </div>
+
+  <div class="niche-rank">
+    <div class="niche-rank-num bronze">5</div>
+    <div class="niche-rank-body">
+      <div class="niche-rank-name">Mechanic / Auto Repair Shops</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:6px 0"><span class="badge badge-amber">Medium close</span><span class="badge badge-accent">$500–$1,200</span><span class="badge badge-red">Skeptical owners</span></div>
+      <div class="niche-rank-why">High-value customers mean they can afford more — but shop owners tend to be skeptical and busy. They need to trust you first. A clean trust-focused demo (certifications, reviews, service list) helps a lot. Better to target these once you have 2–3 testimonials.</div>
+    </div>
+  </div>
+
+  <div class="niche-rank">
+    <div class="niche-rank-num bronze">6</div>
+    <div class="niche-rank-body">
+      <div class="niche-rank-name">Restaurants</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:6px 0"><span class="badge badge-amber">Medium close</span><span class="badge badge-accent">$600–$1,500</span><span class="badge badge-red">Most complex build</span></div>
+      <div class="niche-rank-why">Restaurants know they need websites — but menus, reservations, and food photos make this the most complex build. Higher pay but more work. Owners are often too busy to deal with you. Start here once you're fast and confident.</div>
+    </div>
+  </div>
+
+  <div class="sec-hdr" style="margin-top:1.5rem"><span class="sec-title">🥉 Do These Last — Highest Ticket, Hardest Close</span></div>
+
+  <div class="niche-rank">
+    <div class="niche-rank-num" style="color:var(--muted)">7</div>
+    <div class="niche-rank-body">
+      <div class="niche-rank-name">HVAC / Plumbing / Electrical</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:6px 0"><span class="badge badge-red">Lowest early close rate</span><span class="badge badge-accent">$800–$4,000+</span><span class="badge badge-amber">Highest long-term value</span></div>
+      <div class="niche-rank-why">Highest money potential — one HVAC job can be worth thousands to the owner, so they'll pay for a great site. BUT they are the most heavily marketed-to niche online. They already get spammed by agencies. You need a strong portfolio and confident pitch to land these. Save for Stage 2+.</div>
+    </div>
+  </div>
+
+  <div class="sec-hdr" style="margin-top:2rem"><span class="sec-title">The Strategy in Plain English</span></div>
+  <div class="g3">
+    <div class="panel" style="border-top:3px solid var(--green)">
+      <div class="panel-hdr"><span class="panel-label">Month 1–2</span></div>
+      <div style="font-family:var(--mono);font-size:12px;color:var(--text);line-height:1.8">Target <strong>barbershops + nail salons only.</strong> Get your first 3–5 clients, build confidence, collect testimonials.</div>
+    </div>
+    <div class="panel" style="border-top:3px solid var(--amber)">
+      <div class="panel-hdr"><span class="panel-label">Month 3–4</span></div>
+      <div style="font-family:var(--mono);font-size:12px;color:var(--text);line-height:1.8">Add <strong>cleaning + landscaping.</strong> You have proof now. Your pitch is tighter. Start going for $900 standard packages.</div>
+    </div>
+    <div class="panel" style="border-top:3px solid var(--accent)">
+      <div class="panel-hdr"><span class="panel-label">Month 5+</span></div>
+      <div style="font-family:var(--mono);font-size:12px;color:var(--text);line-height:1.8">Go after <strong>HVAC, mechanics, restaurants.</strong> Higher ticket, harder closes, but now you have the credibility to back it up.</div>
+    </div>
+  </div>
+</div>
+</div>
+
 <button class="floating-theme-btn" id="themeBtn2" onclick="toggleTheme()">Dark mode</button>
 <footer>KP Digital Business Hub · 2026 · All tools run locally in your browser</footer>
 
@@ -1610,9 +2162,7 @@ function toggleTheme(){
   const h=document.documentElement;
   const dark=h.getAttribute('data-theme')==='dark';
   h.setAttribute('data-theme',dark?'light':'dark');
-  const label=dark?'Dark mode':'Light mode';
-  document.getElementById('themeBtn').textContent=label;
-  document.getElementById('themeBtn2').textContent=label;
+  document.getElementById('themeBtn2').textContent=dark?'Dark mode':'Light mode';
 }
 
 // ══════════════ NAV ══════════════
@@ -2041,6 +2591,247 @@ function copyEl(btn,id){
     setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('ok');},2000);
   });
 }
+
+
+// ══════════════ MINDSET / REJECTION ══════════════
+let rejections=parseInt(localStorage.getItem('kp_rej_today')||'0');
+let rejTotal=parseInt(localStorage.getItem('kp_rej_total')||'0');
+let wins=JSON.parse(localStorage.getItem('kp_wins')||'[]');
+
+function addRejection(){
+  rejections++;rejTotal++;
+  localStorage.setItem('kp_rej_today',rejections);
+  localStorage.setItem('kp_rej_total',rejTotal);
+  renderRejection();
+}
+function resetRejections(){
+  rejections=0;localStorage.setItem('kp_rej_today',0);renderRejection();
+}
+function renderRejection(){
+  const el=document.getElementById('rej-count');
+  const msg=document.getElementById('rej-message');
+  const tot=document.getElementById('rej-total');
+  const prog=document.getElementById('rej-progress');
+  if(!el) return;
+  el.textContent=rejections;
+  tot.textContent=rejTotal;
+  const pct=Math.min(100,Math.round((rejTotal/35)*100));
+  prog.textContent=pct+'% to first yes';
+  if(rejections===0) msg.textContent="Start making calls. Every no is data.";
+  else if(rejections<5) msg.textContent="Good start. Keep going — you're just warming up.";
+  else if(rejections<10) msg.textContent="Solid. Most people quit before 10. You didn't.";
+  else if(rejections<20) msg.textContent="Strong session. Your script is getting sharper with every call.";
+  else if(rejections<30) msg.textContent="Elite volume. You're way ahead of 99% of people trying this.";
+  else msg.textContent="Legendary session. A yes is coming — the math guarantees it.";
+}
+
+function addWin(){
+  const text=document.getElementById('win-text').value.trim();
+  if(!text){alert('Describe the win first.');return;}
+  const type=document.getElementById('win-type').value;
+  const val=parseFloat(document.getElementById('win-val').value)||0;
+  wins.push({id:Date.now(),text,type,val,date:new Date().toLocaleDateString()});
+  localStorage.setItem('kp_wins',JSON.stringify(wins));
+  document.getElementById('win-text').value='';
+  document.getElementById('win-val').value='';
+  renderWins();
+  checkMilestones();
+}
+function renderWins(){
+  const el=document.getElementById('win-list');
+  if(!el) return;
+  if(!wins.length){el.innerHTML='<div style="font-family:var(--mono);font-size:11px;color:var(--muted);padding:.75rem 0">No wins logged yet. Log your first one above.</div>';return;}
+  el.innerHTML=wins.slice().reverse().slice(0,8).map(w=>`
+    <div class="win-card">
+      <div><div style="font-family:var(--mono);font-size:12px;font-weight:500">${w.text}</div><div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">${w.type} · ${w.date}</div></div>
+      ${w.val>0?`<div style="font-family:var(--mono);font-size:16px;font-weight:500;color:var(--green)">$${w.val}</div>`:''}
+    </div>`).join('');
+}
+function checkMilestones(){
+  const totalEarned=wins.filter(w=>w.type==='Payment received').reduce((a,b)=>a+b.val,0);
+  const hasDemos=wins.some(w=>w.type==='Demo booked');
+  const hasClient=wins.some(w=>w.type==='Client closed');
+  const hasRetainer=wins.some(w=>w.type==='Referral received');
+  const ms=[
+    {id:'ms-0',met:rejTotal>=10},
+    {id:'ms-1',met:hasDemos},
+    {id:'ms-2',met:hasClient},
+    {id:'ms-3',met:totalEarned>=500},
+    {id:'ms-4',met:totalEarned>=2000},
+    {id:'ms-5',met:hasRetainer},
+  ];
+  ms.forEach(m=>{
+    const el=document.getElementById(m.id);
+    if(el){
+      if(m.met){el.textContent='✅ Done';el.style.background='var(--green-bg)';el.style.color='var(--green)';}
+      else{el.textContent='Locked';el.style.background='var(--bg3)';el.style.color='var(--muted)';}
+    }
+  });
+}
+
+// ══════════════ TAXES ══════════════
+let incomeLog=JSON.parse(localStorage.getItem('kp_income_log')||'[]');
+
+function calcTax(){
+  const payment=parseFloat(document.getElementById('tax-payment').value)||0;
+  const rate=parseFloat(document.getElementById('tax-rate').value)||0.25;
+  const taxAmt=Math.round(payment*rate);
+  const keep=payment-taxAmt;
+  document.getElementById('tax-set').textContent='$'+taxAmt.toLocaleString();
+  document.getElementById('tax-keep').textContent='$'+keep.toLocaleString();
+}
+function addIncomeEntry(){
+  const client=document.getElementById('inc-client').value.trim();
+  const desc=document.getElementById('inc-desc').value.trim();
+  const amount=parseFloat(document.getElementById('inc-amount').value)||0;
+  if(!client||!amount){alert('Enter client name and amount.');return;}
+  incomeLog.push({id:Date.now(),client,desc,amount,date:new Date().toLocaleDateString()});
+  localStorage.setItem('kp_income_log',JSON.stringify(incomeLog));
+  document.getElementById('inc-client').value='';
+  document.getElementById('inc-desc').value='';
+  document.getElementById('inc-amount').value='';
+  renderIncomeLog();
+}
+function removeIncomeEntry(id){
+  incomeLog=incomeLog.filter(x=>x.id!==id);
+  localStorage.setItem('kp_income_log',JSON.stringify(incomeLog));
+  renderIncomeLog();
+}
+function renderIncomeLog(){
+  const el=document.getElementById('income-log-table');
+  if(!el) return;
+  const total=incomeLog.reduce((a,b)=>a+b.amount,0);
+  const tax=Math.round(total*0.25);
+  const net=total-tax;
+  const t=document.getElementById('inc-total');
+  const tx=document.getElementById('inc-tax');
+  const n=document.getElementById('inc-net');
+  if(t) t.textContent='$'+total.toLocaleString();
+  if(tx) tx.textContent='$'+tax.toLocaleString();
+  if(n) n.textContent='$'+net.toLocaleString();
+  if(!incomeLog.length){el.innerHTML='<div style="font-family:var(--mono);font-size:11px;color:var(--muted);padding:1rem 0">No payments logged yet.</div>';return;}
+  el.innerHTML=`<div class="panel"><table class="tbl"><thead><tr><th>Date</th><th>Client</th><th>Description</th><th>Amount</th><th>Set aside (25%)</th><th></th></tr></thead><tbody>${incomeLog.slice().reverse().map(e=>`<tr><td class="tbl-muted">${e.date}</td><td><strong>${e.client}</strong></td><td class="tbl-muted">${e.desc||'—'}</td><td class="tbl-green">$${e.amount.toLocaleString()}</td><td style="color:var(--red)">$${Math.round(e.amount*0.25).toLocaleString()}</td><td><button class="cbtn" onclick="removeIncomeEntry(${e.id})">✕</button></td></tr>`).join('')}</tbody></table></div>`;
+}
+
+// ══════════════ CONTRACT ══════════════
+function buildContract(){
+  const you=document.getElementById('ct-you').value||'[Your Name]';
+  const client=document.getElementById('ct-client').value||'[Client Business]';
+  const project=document.getElementById('ct-project').value||'[Project Description]';
+  const price=parseFloat(document.getElementById('ct-price').value)||0;
+  const deposit=parseFloat(document.getElementById('ct-deposit').value)||Math.round(price*0.5);
+  const balance=price-deposit;
+  const delivery=document.getElementById('ct-delivery').value||'7–10 business days';
+  const revisions=document.getElementById('ct-revisions').value||'2';
+  const date=document.getElementById('ct-date').value||'[Date]';
+  document.getElementById('contract-out').innerHTML=`
+    <div style="text-align:center;margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid var(--border)">
+      <div style="font-size:16px;font-weight:500;letter-spacing:.06em">WEB DESIGN AGREEMENT</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px">${date}</div>
+    </div>
+    <div class="contract-section">
+      <div class="contract-section-title">Parties</div>
+      <div><strong>Designer:</strong> ${you} (KP Digital)</div>
+      <div style="margin-top:4px"><strong>Client:</strong> ${client}</div>
+    </div>
+    <div class="contract-section">
+      <div class="contract-section-title">Project Scope</div>
+      <div>${project}</div>
+      <div style="margin-top:6px;color:var(--muted)">Any work outside this scope will be quoted and billed separately at $75/hr.</div>
+    </div>
+    <div class="contract-section">
+      <div class="contract-section-title">Payment Terms</div>
+      <div>Total project fee: <strong>$${price.toLocaleString()}</strong></div>
+      <div style="margin-top:4px">Deposit (due before work begins): <strong>$${deposit.toLocaleString()}</strong></div>
+      <div style="margin-top:4px">Balance (due before site launch): <strong>$${balance.toLocaleString()}</strong></div>
+      <div style="margin-top:6px;color:var(--muted)">The designer will not begin work until the deposit is received. The site will not be published until the balance is paid in full.</div>
+    </div>
+    <div class="contract-section">
+      <div class="contract-section-title">Timeline & Revisions</div>
+      <div>Estimated delivery: <strong>${delivery}</strong> after all content is received from the client.</div>
+      <div style="margin-top:4px">Revisions included: <strong>${revisions} round${parseInt(revisions)>1?'s':''}</strong>. Additional revisions are billed at $75/hr.</div>
+      <div style="margin-top:4px;color:var(--muted)">Timeline is extended day-for-day if the client delays providing content, photos, or approvals.</div>
+    </div>
+    <div class="contract-section">
+      <div class="contract-section-title">Client Responsibilities</div>
+      <div>The client agrees to provide all required content (text, photos, logo) within 5 business days of signing. The client will respond to review requests within 3 business days.</div>
+    </div>
+    <div class="contract-section">
+      <div class="contract-section-title">Cancellation</div>
+      <div>If the client cancels after work has begun, the deposit is non-refundable. If the designer cancels, the deposit will be refunded in full.</div>
+    </div>
+    <div style="margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:30px">
+      <div>
+        <div style="border-top:1px solid var(--border2);margin-bottom:6px;padding-top:8px">Designer Signature</div>
+        <div style="color:var(--muted)">${you} — KP Digital</div>
+      </div>
+      <div>
+        <div style="border-top:1px solid var(--border2);margin-bottom:6px;padding-top:8px">Client Signature</div>
+        <div style="color:var(--muted)">${client}</div>
+      </div>
+    </div>`;
+}
+
+// ══════════════ PORTFOLIO ══════════════
+let portfolioItems=JSON.parse(localStorage.getItem('kp_portfolio')||'[]');
+
+function addPortfolio(){
+  const name=document.getElementById('pf-name').value.trim();
+  if(!name){alert('Enter a name for this demo.');return;}
+  portfolioItems.push({id:Date.now(),name,niche:document.getElementById('pf-niche').value,status:document.getElementById('pf-status').value,url:document.getElementById('pf-url').value.trim(),date:new Date().toLocaleDateString()});
+  localStorage.setItem('kp_portfolio',JSON.stringify(portfolioItems));
+  document.getElementById('pf-name').value='';
+  document.getElementById('pf-url').value='';
+  renderPortfolio();
+}
+function removePortfolio(id){
+  portfolioItems=portfolioItems.filter(x=>x.id!==id);
+  localStorage.setItem('kp_portfolio',JSON.stringify(portfolioItems));
+  renderPortfolio();
+}
+function updatePortfolioStatus(id,status){
+  const item=portfolioItems.find(x=>x.id===id);
+  if(item){item.status=status;localStorage.setItem('kp_portfolio',JSON.stringify(portfolioItems));renderPortfolio();}
+}
+function renderPortfolio(){
+  const el=document.getElementById('portfolio-list');
+  if(!el) return;
+  if(!portfolioItems.length){el.innerHTML='<div style="font-family:var(--mono);font-size:11px;color:var(--muted);padding:.75rem 0">No demo sites tracked yet. Add your first one above.</div>';return;}
+  const done=portfolioItems.filter(x=>x.status==='Done ✅').length;
+  el.innerHTML=`<div class="info-bar ${done>=2?'green':'amber'}" style="margin-bottom:12px">${done}/3 demo sites complete — ${done>=3?'Ready to start calling!':done>=2?'Almost there — build one more.':'Build 2–3 before you start cold calling.'}</div>`+
+  portfolioItems.map(p=>`
+    <div class="portfolio-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+        <div><div class="portfolio-card-title">${p.name}</div><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">${p.niche} · Added ${p.date}</div>${p.url?`<a href="${p.url}" target="_blank" style="font-family:var(--mono);font-size:11px;color:var(--accent);display:block;margin-top:4px">${p.url}</a>`:''}</div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <select class="fi" style="width:130px;padding:4px 8px;font-size:11px" onchange="updatePortfolioStatus(${p.id},this.value)">
+            <option ${p.status==='Planning'?'selected':''}>Planning</option>
+            <option ${p.status==='In Progress'?'selected':''}>In Progress</option>
+            <option ${p.status==='Done ✅'?'selected':''}>Done ✅</option>
+          </select>
+          <button class="cbtn" onclick="removePortfolio(${p.id})">✕</button>
+        </div>
+      </div>
+      <div class="portfolio-progress"><div class="portfolio-progress-fill" style="width:${p.status==='Done ✅'?100:p.status==='In Progress'?55:10}%"></div></div>
+    </div>`).join('');
+}
+
+// ══════════════ PLAYBOOK ══════════════
+function togglePlaybook(header){
+  const body=header.nextElementSibling;
+  body.classList.toggle('open');
+}
+
+// ══════════════ INIT EXTENSIONS ══════════════
+renderRejection();
+renderWins();
+checkMilestones();
+calcTax();
+renderIncomeLog();
+renderPortfolio();
+buildContract();
+const ctDate=document.getElementById('ct-date');
+if(ctDate) ctDate.value=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
 
 // ══════════════ INIT ══════════════
 renderBizGrids();
